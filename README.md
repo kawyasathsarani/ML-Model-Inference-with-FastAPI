@@ -38,6 +38,7 @@ This project demonstrates how to deploy a Machine Learning model using **FastAPI
     http://127.0.0.1:8000/docs
 
 📂 Project Structure
+
 ML-Model-Inference-with-FastAPI/
 │
 ├─ main.py             # FastAPI app
@@ -45,7 +46,9 @@ ML-Model-Inference-with-FastAPI/
 ├─ requirements.txt    # Python dependencies
 ├─ README.md           # Project description
 
+
 💡Send a POST request to /predict with JSON data like:
+
 {
   "sepal_length": 5.1,
   "sepal_width": 3.5,
@@ -53,8 +56,10 @@ ML-Model-Inference-with-FastAPI/
   "petal_width": 0.2
 }
 
+
 👩‍💻 Author
 Kawya Sathsarani
+
 
 📄 License
 
