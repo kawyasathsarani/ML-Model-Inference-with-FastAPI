@@ -1,25 +1,31 @@
+# train_model.py
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 import joblib
 
-# Step 1: Load dataset
-iris = load_iris()
-X, y = iris.data, iris.target
+# 1) Load dataset
+data = load_iris()
+X, y = data.data, data.target
 
-# Step 2: Split dataset
+# 2) Split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-# Step 3: Train model
-model = LogisticRegression(max_iter=200)
-model.fit(X_train, y_train)
+# 3) Train a simple model (good for beginners)
+pipe = Pipeline([
+    ("scaler", StandardScaler()),
+    ("clf", LogisticRegression(max_iter=1000))
+])
+pipe.fit(X_train, y_train)
 
-# Step 4: Evaluate
-accuracy = model.score(X_test, y_test)
-print("Model Accuracy:", accuracy)
+print("Train accuracy:", pipe.score(X_train, y_train))
+print("Test accuracy:", pipe.score(X_test, y_test))
 
-# Step 5: Save model
-joblib.dump(model, "model.pkl")
-print("Model saved as model.pkl")
+# 4) Save model + class names
+joblib.dump({"model": pipe, "target_names": data.target_names}, "model.pkl")
+print("Saved model.pkl")
+
