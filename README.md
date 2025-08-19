@@ -47,6 +47,11 @@ ML-Model-Inference-with-FastAPI/
 ├─ README.md           # Project description
 
 
+
+
+
+
+
 💡Send a POST request to /predict with JSON data like:
 
 {
@@ -55,6 +60,11 @@ ML-Model-Inference-with-FastAPI/
   "petal_length": 1.4,
   "petal_width": 0.2
 }
+
+
+
+
+
 
 
 👩‍💻 Author
